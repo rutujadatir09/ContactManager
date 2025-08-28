@@ -4,20 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Contacts</title>
-	<link rel="stylesheet" data-th-href="@{/css/output.css}"/>
+	<link href="/css/output.css" rel="stylesheet">
 	
   </head>
   <body>
 	
-	<div class=" bg-gray-200 w-1/2 p-4 mx-auto ">
+	<div class=" bg-red-200 w-1/2 p-4 flex flex-col space-y-3 mx-auto mt-4">
 		
-		<h1 data-th-text="${name}">Welcome to Home page</h1>
-		<p>
+		<h1 class="text-2 font-bold" data-th-text="${name}">
+			Welcome to Home page
+		</h1>
+		<p class="text-xl text-gray-700">
 			Contact Manager is a web-based application designed to securely store, organize, and manage contact information in one place.
 			It allows users to add, update, delete, and search contacts with ease. With features like authentication, categorization, and a clean user interface, 
-			it ensures both convenience and data privacy. This system replaces traditional paper records and scattered contact 
+			it ensures both convenience and data privacy.This system replaces traditional paper records and scattered contact 
 			lists with a modern, accessible, and reliable digital solution.
 		</p>
+		<button class="px-3 py-3 rounded bg-blue-700 text-white hover:bg-blue-600">
+			Click Here
+		</button>
 		
 	</div>
    	
