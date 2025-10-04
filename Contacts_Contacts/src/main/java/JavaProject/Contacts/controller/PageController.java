@@ -17,5 +17,22 @@ public class PageController {
         
 		return "home";
 	}
+	
+	//about 
+	
+	@RequestMapping("/about")
+	public String aboutpage() {
+		System.out.println("about page");
+		return "about";
+	}
+	
+	//services
+	
+	@RequestMapping("/services")
+	public String Servicespage() {
+		System.out.println("services page");
+		return "services";
+	}
+	
 
 }
