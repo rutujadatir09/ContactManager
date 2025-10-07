@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" th:replace="~{basic :: parent(~{::#content} , ~{::#title} , ~{::#script})}">
 <head>
-  <link rel="stylesheet" href="styles.css">
+	
+	<title id="title">About Page</title>
+    
 </head>
 <body>
-
-<h1>This is a heading</h1>
-<p>This is a paragraph.</p>
-
-<div th:insert="~{basic :: parent}">
-	
-</div>
-
+	<div id="content">
+		this is about page
+	</div>
+    <script id="script">
+		console.log("about page running");
+	</script>
 </body>
 </html>
