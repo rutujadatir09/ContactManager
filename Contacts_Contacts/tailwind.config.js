@@ -1,10 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  
-    content: ["./src/msin/resources/**/*.{html,js}"],
+  content: ["./src/main/resources/**/*.{html,js}"], // ✅ corrected path
   theme: {
     extend: {},
   },
   plugins: [],
-  darkmode: "selector",
+  darkMode: "class", // ✅ correct key and value
 };
