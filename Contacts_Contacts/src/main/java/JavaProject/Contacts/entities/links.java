@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Builder
+@Builder 
 @AllArgsConstructor
 @NoArgsConstructor
-public class links {
+public class links{
 	
 	@Id
 	private long id;
