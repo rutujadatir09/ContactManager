@@ -72,7 +72,7 @@ public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHa
             user.setAbout("This account is created using google.");
 
         } else if (authorizedClientRegistrationId.equalsIgnoreCase("github")) {
-            // github
+            // github login
             // github attributes
             String email = oauthUser.getAttribute("email") != null ? oauthUser.getAttribute("email").toString()
                     : oauthUser.getAttribute("login").toString() + "@gmail.com";
