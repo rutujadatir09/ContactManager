@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Builder 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class links{
-	
+
 	@Id
 	private long id;
 	private String link;
 	private String title;
-	
+
 	@ManyToOne
 	private Contact contact;
 

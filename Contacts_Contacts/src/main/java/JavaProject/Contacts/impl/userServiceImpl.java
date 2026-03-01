@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import JavaProject.Contacts.entities.userApp;
+import JavaProject.Contacts.helper.AppConstants;
 import JavaProject.Contacts.helper.ResourcesNotFoundException;
 import JavaProject.Contacts.repo.userRepo;
 import JavaProject.Contacts.service.userService;
@@ -20,14 +23,24 @@ public class userServiceImpl implements userService{
 	@Autowired
 	private userRepo userRepo;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	public userApp saveUser(userApp user) {
-		// TODO Auto-generated method stub
+		
 		String userId = UUID.randomUUID().toString();
 		user.setId(userId);
 		
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		
+		
+		user.setRoleList(List.of(AppConstants.ROLE_USER));
+		
+		logger.info(user.getProvider().toString());
+
 		return userRepo.save(user);
 	}
 
@@ -47,7 +60,7 @@ public class userServiceImpl implements userService{
 		user1.setPassword(user.getPassword());
 		user1.setPhoneno(user.getPhoneno());
 		user1.setAbout(user.getAbout());
-		user1.setEnable(user.isEnable());
+		user1.setEnable(user.isEnabled());
 		user1.setProfile(user.getProfile());
 		user1.setEmailVerified(user.isEmailVerified());
 		user1.setPhoneVerified(user.isPhoneVerified());
@@ -59,11 +72,11 @@ public class userServiceImpl implements userService{
 
 	@Override
 	public void deleteUser(String id) {
-		
+
 		userApp user1 = userRepo.findById(id)
 				.orElseThrow(() ->  new ResourcesNotFoundException("User not found"));
 		          userRepo.delete(user1);
-		
+
 	}
 
 	@Override
