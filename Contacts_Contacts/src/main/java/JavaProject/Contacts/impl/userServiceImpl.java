@@ -1,9 +1,11 @@
 package JavaProject.Contacts.impl;
 
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import JavaProject.Contacts.helper.AppConstants;
 import JavaProject.Contacts.helper.ResourcesNotFoundException;
 import JavaProject.Contacts.repo.userRepo;
 import JavaProject.Contacts.service.userService;
+import jakarta.validation.constraints.Email;
 
 @Service
 public class userServiceImpl implements userService{
@@ -97,6 +100,13 @@ public class userServiceImpl implements userService{
 	public List<userApp> getAllUsers() {
 		// TODO Auto-generated method stub
 		return userRepo.findAll();
+	}
+	
+	@Override 
+	public userApp getUserByEmail(String email) {
+		
+		return userRepo.findByEmail(email).orElse(null);
+		
 	}
 
 }

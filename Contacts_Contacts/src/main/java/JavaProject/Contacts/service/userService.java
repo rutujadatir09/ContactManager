@@ -23,7 +23,7 @@ public interface userService {
 
 	    List<userApp> getAllUsers();
 
-	    //userApp getUserByEmail(String email);
+	    userApp getUserByEmail(String email);
 
 
 }
