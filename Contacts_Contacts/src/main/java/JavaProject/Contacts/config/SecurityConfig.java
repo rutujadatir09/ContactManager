@@ -48,7 +48,7 @@ public class SecurityConfig {
 
 	            formLogin.loginPage("/login");
 	            formLogin.loginProcessingUrl("/authenticate");
-	            formLogin.successForwardUrl("/user/dashboard");
+	            formLogin.successForwardUrl("/user/profile");
 	            formLogin.usernameParameter("email");
 	            formLogin.passwordParameter("password");
 	            
@@ -69,7 +69,6 @@ public class SecurityConfig {
 	            logoutForm.logoutSuccessUrl("/login?logout=true");
 	        });
 	        
-	        httpSecurity.oauth2Login(Customizer.withDefaults());
 		
 		return httpSecurity.build();
 	}
