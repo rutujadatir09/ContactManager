@@ -6,10 +6,8 @@ import java.util.Optional;
 import JavaProject.Contacts.entities.userApp;
 
 public interface userService {
-
+	
 	 	userApp saveUser(userApp user);
-
-	 	//if user present then do opertations if not throw error
 
 	    Optional<userApp> getUserById(String id);
 
@@ -18,7 +16,7 @@ public interface userService {
 	    void deleteUser(String id);
 
 	    boolean isUserExist(String userId);
-
+	    
 	    boolean isUserExistByEmail(String email);
 
 	    List<userApp> getAllUsers();

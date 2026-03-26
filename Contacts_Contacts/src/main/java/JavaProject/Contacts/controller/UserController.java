@@ -3,9 +3,9 @@ package JavaProject.Contacts.controller;
 import org.ietf.jgss.Oid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.engine.AttributeName;
@@ -39,9 +39,15 @@ public class UserController {
         return "user/dashboard";
     }
 
-    @RequestMapping(value = "/profile")
+    @GetMapping(value = "/profile")
     public String userProfile(Model model, Authentication authentication) {
-        
+
+        String username = authentication.getName();
+
+        userApp user = userService.getUserByEmail(username);
+
+        model.addAttribute("loggedInUser", user);
+
         return "user/profile";
     }
 }

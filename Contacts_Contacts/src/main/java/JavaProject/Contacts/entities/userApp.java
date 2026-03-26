@@ -42,9 +42,10 @@ public class userApp implements UserDetails{
     @Column(length = 10)
     private String phoneno;
     
+    @Column(name = "enabled")
      @Getter(value = AccessLevel.NONE)
-
-    private boolean enable = true;
+     
+    private boolean enabled = true;
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
 
@@ -99,7 +100,7 @@ public class userApp implements UserDetails{
 	
 	@Override
 	public boolean isEnabled() {
-		return this.enable;
+		return this.enabled;
 	}
 
 	@Override
