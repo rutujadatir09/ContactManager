@@ -71,14 +71,14 @@ public class PageController {
     }
 
     @RequestMapping(value = "/do-register", method = RequestMethod.POST)
-    public String processregister(@Valid @ModelAttribute UserForm userForm , BindingResult rBindingResult,
-            HttpSession session) {
-
+    public String processregister(@Valid @ModelAttribute UserForm userForm,
+                                  BindingResult rBindingResult,
+                                  HttpSession session) {
 
         System.out.println(userForm);
-        
-        if(rBindingResult.hasErrors()) {
-        	return "signup";
+
+        if (rBindingResult.hasErrors()) {
+            return "signup";
         }
 
         userApp user = new userApp();
@@ -86,18 +86,22 @@ public class PageController {
         user.setEmail(userForm.getEmail());
         user.setPassword(userForm.getPassword());
         user.setPhoneno(userForm.getPhoneno());
-        user.setEnable(false);
+
+        user.setEnabled(false);
+        user.setEmailVerified(false);
         user.setProfile("");
 
         userApp savedUser = userService.saveUser(user);
-        System.out.println("user saved :");
 
-        Message message = Message.builder().content("Registration Successful").type(MessageType.blue).build();
+        System.out.println("user saved : " + savedUser.getEmail());
+
+        Message message = Message.builder()
+                .content("Registration Successful. Please check your email for verification link.")
+                .type(MessageType.blue)
+                .build();
 
         session.setAttribute("message", message);
 
         return "redirect:/signup";
-
     }
-
 }

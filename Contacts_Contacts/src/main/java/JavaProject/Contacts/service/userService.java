@@ -3,6 +3,8 @@ package JavaProject.Contacts.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import JavaProject.Contacts.entities.userApp;
 
 public interface userService {

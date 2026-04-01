@@ -56,7 +56,7 @@ public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHa
         user.setId(UUID.randomUUID().toString());
         user.setRoleList(List.of(AppConstants.ROLE_USER));
         user.setEmailVerified(true);
-        user.setEnable(true);
+        user.setEnabled(true);
         user.setPassword("dummy");
 
         if (authorizedClientRegistrationId.equalsIgnoreCase("google")) {
