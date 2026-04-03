@@ -35,13 +35,13 @@ public class Contact {
 	private String id;
 	private String name;
 	private String email;
-	private String phoneNo;
+	private String phoneno;
 	private String address;
 	private String picture;
 	@Column(length = 1000)
 	private String description;
 	private boolean fav = false;
-	private String weblink;
+	private String webLink;
 	private String LinkedInLink;
 	private String cloudinaryImagePublicId;
 

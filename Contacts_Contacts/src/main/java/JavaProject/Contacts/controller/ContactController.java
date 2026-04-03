@@ -1,8 +1,6 @@
 package JavaProject.Contacts.controller;
 
 import java.util.*;
-
-import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,7 +41,7 @@ public class ContactController {
 
     @Autowired
     private ImageService imageService;
-
+    
     @Autowired
     private userService userService;
 
@@ -80,12 +78,12 @@ public class ContactController {
         contact.setName(contactForm.getName());
         contact.setFav(contactForm.isFav());
         contact.setEmail(contactForm.getEmail());
-        contact.setPhoneNo(contactForm.getPhoneno());
+        contact.setPhoneno(contactForm.getPhoneno());
         contact.setAddress(contactForm.getAddress());
         contact.setDescription(contactForm.getDescription());
         contact.setUser(user);
-        contact.setLinkedInLink(contactForm.getLinkedInlink());
-        contact.setWeblink(contactForm.getWebLink());
+        contact.setLinkedInLink(contactForm.getLinkedInLink());
+        contact.setWebLink(contactForm.getWebLink());
 
         if (contactForm.getContactImage() != null && !contactForm.getContactImage().isEmpty()) {
             String filename = UUID.randomUUID().toString();
@@ -107,7 +105,6 @@ public class ContactController {
 
     }
 
-    // view contacts
 
     @RequestMapping
     public String viewContacts(
@@ -125,7 +122,7 @@ public class ContactController {
         Page<Contact> pageContact = contactService.getByUser(user, page, size, sortBy, direction);
 
         model.addAttribute("pageContact", pageContact);
-        model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
+        model.addAttribute("pageSize", size);
 
         model.addAttribute("contactSearchForm", new ContactSearchForm());
 
@@ -136,7 +133,6 @@ public class ContactController {
 
     @RequestMapping("/search")
     public String searchHandler(
-
             @ModelAttribute ContactSearchForm contactSearchForm,
             @RequestParam(value = "size", defaultValue = AppConstants.PAGE_SIZE + "") int size,
             @RequestParam(value = "page", defaultValue = "0") int page,
@@ -149,25 +145,20 @@ public class ContactController {
 
         var user = userService.getUserByEmail(Helper.getEmailOfLoggedInUser(authentication));
 
-        Page<Contact> pageContact = null;
+        Page<Contact> pageContact = Page.empty();
+
         if (contactSearchForm.getField().equalsIgnoreCase("name")) {
-            pageContact = contactService.searchByName(contactSearchForm.getValue(), size, page, sortBy, direction,
-                    user);
+            pageContact = contactService.searchByName(contactSearchForm.getValue(), size, page, sortBy, direction, user);
         } else if (contactSearchForm.getField().equalsIgnoreCase("email")) {
-            pageContact = contactService.searchByEmail(contactSearchForm.getValue(), size, page, sortBy, direction,
-                    user);
-        } else if (contactSearchForm.getField().equalsIgnoreCase("phone")) {
-            pageContact = contactService.searchByPhoneNumber(contactSearchForm.getValue(), size, page, sortBy,
-                    direction, user);
+            pageContact = contactService.searchByEmail(contactSearchForm.getValue(), size, page, sortBy, direction, user);
+        } else if (contactSearchForm.getField().equalsIgnoreCase("phoneno")) {
+            pageContact = contactService.searchByPhoneNumber(contactSearchForm.getValue(), size, page, sortBy, direction, user);
         }
 
-        logger.info("pageContact {}", pageContact);
-
         model.addAttribute("contactSearchForm", contactSearchForm);
-
         model.addAttribute("pageContact", pageContact);
-
         model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
+        model.addAttribute("pageSize", size);
 
         return "user/search";
     }
@@ -201,12 +192,12 @@ public class ContactController {
         ContactForm contactForm = new ContactForm();
         contactForm.setName(contact.getName());
         contactForm.setEmail(contact.getEmail());
-        contactForm.setPhoneno(contact.getPhoneNo());
+        contactForm.setphoneno(contact.getPhoneno());
         contactForm.setAddress(contact.getAddress());
         contactForm.setDescription(contact.getDescription());
         contactForm.setFav(contact.isFav());
-        contactForm.setWebLink(contact.getWeblink());
-        contactForm.setLinkedInlink(contact.getLinkedInLink());
+        contactForm.setWebLink(contact.getWebLink());
+        contactForm.setLinkedInLink(contact.getLinkedInLink());
         contactForm.setPicture(contact.getPicture());
         ;
         model.addAttribute("contactForm", contactForm);
@@ -230,12 +221,12 @@ public class ContactController {
 
         con.setName(contactForm.getName());
         con.setEmail(contactForm.getEmail());
-        con.setPhoneNo(contactForm.getPhoneno());
+        con.setPhoneno(contactForm.getPhoneno());
         con.setAddress(contactForm.getAddress());
         con.setDescription(contactForm.getDescription());
         con.setFav(contactForm.isFav());
-        con.setWeblink(contactForm.getWebLink());
-        con.setLinkedInLink(contactForm.getLinkedInlink());
+        con.setWebLink(contactForm.getWebLink());
+        con.setLinkedInLink(contactForm.getLinkedInLink());
 
         // process image:
 

@@ -13,7 +13,7 @@ public class EmailServiceImpl implements EmailService {
 
     @Autowired
     private JavaMailSender eMailSender;
-
+    
     @Value("${spring.mail.username}")
     private String fromEmail;
 

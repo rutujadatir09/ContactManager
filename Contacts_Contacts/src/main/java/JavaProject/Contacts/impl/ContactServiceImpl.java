@@ -34,12 +34,12 @@ public class ContactServiceImpl implements ContactService {
 
         contactOld.setName(contact.getName());
         contactOld.setEmail(contact.getEmail());
-        contactOld.setPhoneNo(contact.getPhoneNo());
+        contactOld.setPhoneno(contact.getPhoneno());
         contactOld.setAddress(contact.getAddress());
         contactOld.setDescription(contact.getDescription());
         contactOld.setPicture(contact.getPicture());
         contactOld.setFav(contact.isFav());
-        contactOld.setWeblink(contact.getWeblink());
+        contactOld.setWebLink(contact.getWebLink());
         contactOld.setLinkedInLink(contact.getLinkedInLink());
         contactOld.setCloudinaryImagePublicId(contact.getCloudinaryImagePublicId());
 
@@ -105,6 +105,6 @@ public class ContactServiceImpl implements ContactService {
                 : Sort.by(sortBy).ascending();
 
         var pageable = PageRequest.of(page, size, sort);
-        return contactRepo.findByUserAndPhoneNoContaining(user, phoneNumberKeyword, pageable);
+        return contactRepo.findByUserAndPhonenoContaining(user, phoneNumberKeyword, pageable);
     }
 }

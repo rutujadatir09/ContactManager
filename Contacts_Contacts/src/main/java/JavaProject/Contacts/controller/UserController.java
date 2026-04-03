@@ -39,10 +39,10 @@ public class UserController {
         return "user/dashboard";
     }
 
-    @GetMapping(value = "/profile")
-    public String userProfile(Model model, Authentication authentication) {
+    @GetMapping("/profile")
+    public String profilePage(Model model, Authentication authentication) {
 
-        String username = authentication.getName();
+        String username = Helper.getEmailOfLoggedInUser(authentication);
 
         userApp user = userService.getUserByEmail(username);
 

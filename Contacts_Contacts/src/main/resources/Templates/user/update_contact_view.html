@@ -106,7 +106,7 @@
                       <i class="fa-solid w-4 h-4 fa-phone"></i>
                     </div>
                     <input
-                      data-th-field="*{phoneNumber}"
+                      data-th-field="*{phoneno}"
                       type="text"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="9823525525"
@@ -114,8 +114,8 @@
                   </div>
                   <p
                     class="text-red-500"
-                    data-th-if="${#fields.hasErrors('phoneNumber')}"
-                    data-th-errors="*{phoneNumber}"
+                    data-th-if="${#fields.hasErrors('phoneno')}"
+                    data-th-errors="*{phoneno}"
                   >
                     Invalid Name
                   </p>
@@ -172,7 +172,7 @@
                           <i class="fa-solid w-4 h-4 fa-earth-americas"></i>
                         </div>
                         <input
-                          data-th-field="*{websiteLink}"
+                          data-th-field="*{webLink}"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="htt://learncodewithdurgesh.com/"
                         />
@@ -190,7 +190,7 @@
                         </div>
                         <input
                           type="text"
-                          data-th-field="*{linkedInLink}"
+                          data-th-field="*{LinkedInLink}"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="htt://learncodewithdurgesh.com/"
                         />
@@ -233,7 +233,7 @@
 
                 <div class="flex items-center mb-3">
                   <input
-                    data-th-field="*{favorite}"
+                    data-th-field="*{fav}"
                     type="checkbox"
                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />

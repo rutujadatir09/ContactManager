@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,11 +41,12 @@ public class ContactForm {
 
     private String webLink;
 
-    private String linkedInlink;
+    private String LinkedInLink;
 
     @ValidFile(message = "Invalid File")
     private MultipartFile contactImage;
 
     private String picture;
+	
 
 }
